@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9ec4,#ffcce0,#ffeef5);
+overflow-x:hidden;
+color:#fff;
+}
+
+section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:40px;
+text-align:center;
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:70px;
+margin-bottom:15px;
+animation:fadeDown 1s;
+}
+
+h2{
+font-size:35px;
+margin-bottom:20px;
+}
+
+p{
+max-width:700px;
+line-height:1.8;
+font-size:18px;
+}
+
+.btn{
+margin-top:30px;
+padding:15px 40px;
+background:white;
+color:#ff4d88;
+border:none;
+border-radius:50px;
+font-size:18px;
+cursor:pointer;
+transition:.3s;
+font-weight:bold;
+}
+
+.btn:hover{
+transform:scale(1.1);
+}
+
+.card{
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(12px);
+padding:35px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+width:100%;
+max-width:1000px;
+margin-top:30px;
+}
+
+.gallery img{
+width:100%;
+height:260px;
+object-fit:cover;
+border-radius:20px;
+transition:.4s;
+box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+#countdown{
+font-size:45px;
+font-weight:bold;
+margin-top:20px;
+}
+
+.heart{
+position:fixed;
+color:red;
+animation:fall linear forwards;
+top:-50px;
+pointer-events:none;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
+}
+
+@keyframes fadeDown{
+from{
+opacity:0;
+transform:translateY(-50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+</style>
+</head>
+<body>
+
+<audio id="bgm" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const audio = document.getElementById("bgm");
+const gift  = document.getElementById("gift");
+
+gift.onclick = async () => {
+  try {
+    await audio.play();
+  } catch (e) {
+    console.log("Autoplay diblokir browser", e);
+  }
+
+  gift.classList.add("open");
+  confetti();
+};
+</script>
+
+<section>
+
+<div class="card">
+
+<h1>Happy Birthday ❤️</h1>
+
+<h2>Untuk Cintaku Tersayang</h2>
+
+<p>
+
+Selamat ulang tahun sayangku...
+
+Terima kasih sudah hadir dan menjadi bagian terindah dalam hidupku.
+
+Semoga semua impianmu tercapai, selalu diberikan kesehatan, kebahagiaan, dan semoga kita bisa terus bersama sampai tua nanti.
+
+Aku mungkin bukan orang yang sempurna, tapi aku akan selalu berusaha menjadi alasan kamu tersenyum setiap hari.
+
+Aku sayang kamu, hari ini, besok, dan selamanya. ❤️
+
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="card">
+
+<h2>Countdown Hari Bahagiamu 🎂</h2>
+
+<div id="countdown"></div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Kenangan Kita 📸</h2>
+
+<div class="gallery">
+
+<img src="foto1.jpg">
+
+<img src="foto2.jpg">
+
+<img src="foto3.jpg">
+
+<img src="foto4.jpg">
+
+</div>
+
+</section>
+
+<section>
+
+<div class="card">
+
+<h2>Surat Untukmu 💌</h2>
+
+<p id="typing"></p>
+
+</div>
+
+</section>
+
+<script>
+
+function love(){
+
+alert("Aku mencintaimu lebih dari kata-kata yang bisa menjelaskannya ❤️");
+
+}
+
+const target=new Date("Juli 24, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+
+let now=new Date().getTime();
+
+let d=target-now;
+
+let hari=Math.floor(d/(1000*60*60*24));
+
+let jam=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+
+let menit=Math.floor((d%(1000*60*60))/60000);
+
+let detik=Math.floor((d%(60000))/1000);
+
+document.getElementById("countdown").innerHTML=
+hari+" Hari "+jam+" Jam "+menit+" Menit "+detik+" Detik";
+
+},1000);
+
+const text="Aku berharap setiap langkahmu selalu dipenuhi kebahagiaan. Terima kasih karena telah menjadi seseorang yang selalu membuat hidupku lebih berwarna. Semoga di usia yang baru ini semua doa dan harapanmu terkabul. Aku akan selalu ada untukmu. Happy Birthday My Love ❤️";
+
+let i=0;
+
+function type(){
+
+if(i<text.length){
+
+document.getElementById("typing").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(type,45);
+
+}
+
+}
+
+type();
+
+function heart(){
+
+const h=document.createElement("div");
+
+h.classList.add("heart");
+
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.fontSize=Math.random()*25+15+"px";
+
+h.style.animationDuration=Math.random()*3+3+"s";
+
+document.body.appendChild(h);
+
+setTimeout(()=>{
+
+h.remove();
+
+},6000);
+
+}
+
+setInterval(heart,250);
+
+</script>
+
+</body>
+</html>
