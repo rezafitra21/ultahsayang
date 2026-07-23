@@ -131,24 +131,18 @@ transform:translateY(0);
 </head>
 <body>
 
-<audio id="bgm" autoplay muted loop>
-  <source src="music.mp3" type="audio/mpeg">
+<audio id="bgMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-const audio = document.getElementById("bgm");
-const gift  = document.getElementById("gift");
+window.addEventListener("load", () => {
+    const music = document.getElementById("bgMusic");
 
-gift.onclick = async () => {
-  try {
-    await audio.play();
-  } catch (e) {
-    console.log("Autoplay diblokir browser", e);
-  }
-
-  gift.classList.add("open");
-  confetti();
-};
+    music.play().catch(() => {
+        console.log("Autoplay diblokir oleh browser.");
+    });
+});
 </script>
 
 <section>
