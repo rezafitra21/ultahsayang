@@ -3,11 +3,66 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday My Love ❤️</title>
+<title>Happy Birthday My Love 💗💗</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
+
+    body{
+    position:relative;
+    overflow-x:hidden;
+}
+
+section{
+    position:relative;
+    z-index:2;
+}
+
+.flowers{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:-1;
+}
+
+.flowers span{
+    position:absolute;
+    bottom:-100px;
+    display:block;
+    font-size:35px;
+    opacity:.25;
+    animation:flowerMove linear infinite;
+}
+
+.flowers span:nth-child(1){left:3%;animation-duration:18s;}
+.flowers span:nth-child(2){left:10%;animation-duration:20s;}
+.flowers span:nth-child(3){left:18%;animation-duration:15s;}
+.flowers span:nth-child(4){left:26%;animation-duration:22s;}
+.flowers span:nth-child(5){left:34%;animation-duration:18s;}
+.flowers span:nth-child(6){left:42%;animation-duration:24s;}
+.flowers span:nth-child(7){left:50%;animation-duration:19s;}
+.flowers span:nth-child(8){left:58%;animation-duration:21s;}
+.flowers span:nth-child(9){left:66%;animation-duration:17s;}
+.flowers span:nth-child(10){left:74%;animation-duration:23s;}
+.flowers span:nth-child(11){left:82%;animation-duration:18s;}
+.flowers span:nth-child(12){left:90%;animation-duration:20s;}
+.flowers span:nth-child(13){left:96%;animation-duration:22s;}
+.flowers span:nth-child(14){left:55%;animation-duration:25s;}
+
+@keyframes flowerMove{
+    0%{
+        transform:translateY(0) rotate(0deg);
+    }
+    100%{
+        transform:translateY(-120vh) rotate(360deg);
+    }
+}
+
 *{
 margin:0;
 padding:0;
@@ -131,6 +186,23 @@ transform:translateY(0);
 </head>
 <body>
 
+    <div class="flowers">
+    <span>🌸</span>
+    <span>🌺</span>
+    <span>🌷</span>
+    <span>🌹</span>
+    <span>💮</span>
+    <span>🌸</span>
+    <span>🌷</span>
+    <span>🌹</span>
+    <span>🌺</span>
+    <span>💮</span>
+    <span>🌸</span>
+    <span>🌹</span>
+    <span>🌷</span>
+    <span>🌺</span>
+</div>
+
 <audio id="bgMusic" autoplay loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -149,9 +221,9 @@ window.addEventListener("load", () => {
 
 <div class="card">
 
-<h1>Happy Birthday 💗💗</h1>
+<h1>Happy Birthday🎂</h1>
 
-<h2>Untuk Cintaku Tersayang</h2>
+<h2>Untuk Cintaku Tersayang💗</h2>
 
 <p>
 
@@ -174,6 +246,10 @@ Aku sayang aayaangg, hari ini, besok, dan selamanyaa.💗💗
 <section>
 
 <div class="card">
+
+<h2>Lama Kita Bersama💗</h2>
+
+<div id="together" style="font-size:35px;font-weight:bold;margin-bottom:25px;"></div>
 
 <h2>Countdown Hari Bahagia Aaayaangg 🎂</h2>
 
@@ -220,6 +296,41 @@ function love(){
 alert("Aku cintaa aayaangg lebih dari kata-kata yang bisa menjelaskannya 💗💗");
 
 }
+
+const anniversary = new Date("2026-01-01T00:00:00");
+
+function updateTogether(){
+
+    const now = new Date();
+
+    let years = now.getFullYear() - anniversary.getFullYear();
+    let months = now.getMonth() - anniversary.getMonth();
+    let days = now.getDate() - anniversary.getDate();
+
+    if(days < 0){
+        months--;
+
+        const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += lastMonth.getDate();
+    }
+
+    if(months < 0){
+        years--;
+        months += 12;
+    }
+
+    const diff = now - anniversary;
+
+    const totalDays = Math.floor(diff / (1000*60*60*24));
+
+    document.getElementById("together").innerHTML =
+    `${years} Tahun ${months} Bulan ${days} Hari <br><br>
+     (${totalDays} Hari Bersama)`;
+}
+
+updateTogether();
+
+setInterval(updateTogether,1000);
 
 const target=new Date("Juli 24, 2026 00:00:00").getTime();
 
